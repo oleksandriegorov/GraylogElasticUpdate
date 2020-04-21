@@ -14,3 +14,12 @@
 - run vagrant reload with a provision forced:
 `vagrant reload --provision`
 - as a result master nodes will be upgraded first, followed by data nodes
+
+### Install Kibana
+- Applicable to ElasticSearch 6 only
+- This process is currently semi-automatic:
+  - choose any server and ssh to it
+  - run puppet manifest for kibana:
+  `puppet apply /vagrant/manifests/kibana.pp`
+  - open port to vm's 5601 for web ui
+  - use kibana monitoring feature

@@ -10,6 +10,7 @@
 
 ### Upgrade from 5.6 to 6.8 simulation
 - make sure to switch to tag 6.8
+`git checkout v6.8`
 - run vagrant reload with a provision forced:
 `vagrant reload --provision`
 - as a result master nodes will be upgraded first, followed by data nodes

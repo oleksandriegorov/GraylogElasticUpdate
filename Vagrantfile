@@ -67,10 +67,11 @@ Vagrant.configure("2") do |config|
     end
     gl.vm.provision "Graylog shell",type: "shell", inline: <<-SHELL
       PATH=${PATH}:/opt/puppetlabs/bin
-	  puppet module install graylog/graylog
+          puppet module install graylog/graylog
           puppet module install puppet-mongodb
           puppet module install puppetlabs/java
           puppet module install philomory/graylog_api
+          pip3 install gelfclient
     SHELL
     gl.vm.network "forwarded_port", guest: 9000, host: 8081
   end

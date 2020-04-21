@@ -8,17 +8,14 @@ class { 'elasticsearch':
   restart_on_change => true,
 }
 
-elasticsearch::instance { 'es-01':
-  ensure => absent,
-}
-
-elasticsearch::instance { 'data-01':
+$server = $facts['hostname']
+elasticsearch::instance { "data-$server":
   config      => {
-    'network.host'                       => '10.17.17.20',
-  	'cluster.name'                       => 'labsetup5.6',
+    'network.host'                       => '_eth1:ipv4_',
+  	'cluster.name'                       => 'labsetup',
   	'node.master'                        => false,
   	'node.data'                          => true,
-  	'discovery.zen.ping.unicast.hosts'   => ['10.17.17.21','10.17.17.22'],
+  	'discovery.zen.ping.unicast.hosts'   => ['10.17.17.31','10.17.17.32'],
   	'discovery.zen.minimum_master_nodes' => 1,
   },
   jvm_options => [

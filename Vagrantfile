@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
     SHELL
     gl.vm.provision "Graylog node", type: "puppet" do |puppet|
       puppet.manifests_path = "manifests"
-      puppet.manifest_file = "graylog_server.pp"
+      puppet.manifest_file = "graylog_server_3.pp"
     gl.vm.network "forwarded_port", guest: 9000, host: 8081
   end
 

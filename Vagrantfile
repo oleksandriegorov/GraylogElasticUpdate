@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       SHELL
       esmaster.vm.provision "Puppet ES Master node #{i}", type: "puppet" do |puppet|
         puppet.manifests_path = "manifests"
-        puppet.manifest_file = "elastic_master.pp"
+        puppet.manifest_file = "elastic_master_6.pp"
       end
     end
   end
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
       SHELL
       es.vm.provision "Puppet ES DATA node #{i}", type: "puppet" do |puppet|
         puppet.manifests_path = "manifests"
-        puppet.manifest_file = "elastic_data.pp"
+        puppet.manifest_file = "elastic_data_6.pp"
       end
     end
   end

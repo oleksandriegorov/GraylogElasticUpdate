@@ -73,6 +73,9 @@ Vagrant.configure("2") do |config|
           puppet module install philomory/graylog_api
           pip3 install gelfclient
     SHELL
+    gl.vm.provision "Graylog node", type: "puppet" do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file = "graylog_server.pp"
     gl.vm.network "forwarded_port", guest: 9000, host: 8081
   end
 

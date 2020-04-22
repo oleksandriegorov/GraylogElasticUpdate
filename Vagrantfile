@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       SHELL
       esmaster.vm.provision "Puppet ES Master node #{i}", type: "puppet" do |puppet|
         puppet.manifests_path = "manifests"
-        puppet.manifest_file = "elastic_master.pp"
+        puppet.manifest_file = "elastic_master_6.pp"
       end
     end
   end
@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
       SHELL
       es.vm.provision "Puppet ES DATA node #{i}", type: "puppet" do |puppet|
         puppet.manifests_path = "manifests"
-        puppet.manifest_file = "elastic_data.pp"
+        puppet.manifest_file = "elastic_data_6.pp"
       end
     end
   end
@@ -78,7 +78,12 @@ Vagrant.configure("2") do |config|
       puppet.manifests_path = "manifests"
       puppet.manifest_file = "graylog_server.pp"
     end
+    gl.vm.provision "Kibana node", type: "puppet" do |puppet|
+      puppet.manifests_path = "manifests"
+      puppet.manifest_file = "kibana.pp"
+    end
     gl.vm.network "forwarded_port", guest: 9000, host: 8081
+    gl.vm.network "forwarded_port", guest: 5601, host: 8082
   end
 
 

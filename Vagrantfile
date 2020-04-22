@@ -71,6 +71,7 @@ Vagrant.configure("2") do |config|
           puppet module install puppet-mongodb
           puppet module install puppetlabs/java
           puppet module install philomory/graylog_api
+          yum install python3 -y
           pip3 install gelfclient
     SHELL
     gl.vm.provision "Graylog node", type: "puppet" do |puppet|

@@ -36,7 +36,7 @@ graylog_index_set { 'graylog':
   description                => 'The Graylog default index set',
   display_name               => 'Default index set',
   shards                     => 4,
-  replicas                   => 1,
+  replicas                   => 2,
   rotation_strategy          => 'size',
   rotation_strategy_details  => {
     max_size => '10 GB'.to_bytes,

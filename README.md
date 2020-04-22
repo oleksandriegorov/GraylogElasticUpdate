@@ -9,17 +9,19 @@
 	- this is useful to confirm that logs from previous version are actually present after upgrade
 
 ### Upgrade from 5.6 to 6.8 simulation
-- make sure to switch to tag 6.8
-`git checkout v6.8`
+- make sure to switch to branch 6.8
+`git checkout 6.8`
 - run vagrant reload with a provision forced:
 `vagrant reload --provision`
 - as a result master nodes will be upgraded first, followed by data nodes
 
 ### Install Kibana
 - Applicable to ElasticSearch 6 only
-- This process is currently semi-automatic:
-  - choose any server and ssh to it
-  - run puppet manifest for kibana:
-  `puppet apply /vagrant/manifests/kibana.pp`
-  - open port to vm's 5601 for web ui
-  - use kibana monitoring feature
+- This process is automated for Kibana installation on gl node and respond to 127.0.0.1:8082 port
+- Or you can always
+  - This process is currently semi-automatic:
+    - choose any server and ssh to it
+    - run puppet manifest for kibana:
+    `puppet apply /vagrant/manifests/kibana.pp`
+    - open port to vm's 5601 for web ui
+    - use kibana monitoring feature

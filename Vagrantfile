@@ -71,6 +71,8 @@ Vagrant.configure("2") do |config|
           puppet module install puppet-mongodb
           puppet module install puppetlabs/java
           puppet module install philomory/graylog_api
+          puppet module install elastic-elasticsearch
+          puppet module install elastic-kibana
           yum install python3 -y
           pip3 install gelfclient
     SHELL
@@ -83,7 +85,7 @@ Vagrant.configure("2") do |config|
       puppet.manifest_file = "kibana.pp"
     end
     gl.vm.network "forwarded_port", guest: 9000, host: 8081
-    gl.vm.network "forwarded_port", guest: 5601, host: 8082
+    gl.vm.network "forwarded_port", guest_ip: '10.17.17.10', guest: 5601, host: 8082
   end
 
 

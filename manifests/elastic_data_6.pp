@@ -11,12 +11,13 @@ class { 'elasticsearch':
 $server = $facts['hostname']
 elasticsearch::instance { "data-$server":
   config      => {
-    'network.host'                       => '_eth1:ipv4_',
-  	'cluster.name'                       => 'labsetup',
-  	'node.master'                        => false,
-  	'node.data'                          => true,
-  	'discovery.zen.ping.unicast.hosts'   => ['10.17.17.31','10.17.17.32'],
-  	'discovery.zen.minimum_master_nodes' => 1,
+    'network.host'                        => '_eth1:ipv4_',
+  	'cluster.name'                        => 'labsetup',
+  	'node.master'                         => false,
+  	'node.data'                           => true,
+  	'discovery.zen.ping.unicast.hosts'    => ['10.17.17.31','10.17.17.32'],
+  	'discovery.zen.minimum_master_nodes'  => 1,
+    'xpack.monitoring.collection.enabled' => true,
   },
   jvm_options => [
     '-Xms512m',

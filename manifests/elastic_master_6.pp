@@ -16,6 +16,7 @@ elasticsearch::instance { "master-$server":
     'node.data'    => false,
   	'discovery.zen.ping.unicast.hosts'   => ['10.17.17.31','10.17.17.32'],
   	'discovery.zen.minimum_master_nodes' => 1,
+    'xpack.monitoring.collection.enabled'    => true,
   },
   jvm_options => [
     '-Xms256m',
